@@ -63,5 +63,16 @@ Furthermore, we applied feature engineering to <code>nutrition</code> -- which, 
 
 The rest of the columns were already in a numeric data type format that was usable by the model and we felt that there was nothing required of us to feature engineer further. 
 
-In summary, we had <code>tags</code> as nominal categorical data that required a one hot encoding and we split the <code>nutrition</code> column into multiple columns of numeric values. 
+In summary, we had <code>tags</code> as nominal categorical data that required a one hot encoding and we split the <code>nutrition</code> column into multiple columns of numeric values. The rest of our columns <code>minutes</code>, <code>n_steps</code>, and <code>n_ingredients</code> were already quantitative values and did not require any feature engineering. 
+
+
+To explain our model further, we decided to use a decision tree regressor to predict the average ratings for recipes. A decision tree regressor is a type of ML model that partitions inputs into smaller and smaller groupings so that it can create a prediction on a continuous quantiative value based off the input features. 
+
+For our baseline model we kept the default parameters offered by sklearn's DecisionTreeRegressor class:
+
+- criterion: 'squared error'
+- splitter: 'best'
+- max_depth: None (expands nodes until all leaves are pure or less nodes than min_samples_split)
+- min_samples_split: 2
+
 
