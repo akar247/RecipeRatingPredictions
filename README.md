@@ -12,7 +12,7 @@ Previously we completed an EDA (exploratory data analysis on a recipe rating dat
 <br>
 
 
-## Framing the Problem
+## <strong> Framing the Problem </strong> 
 <br>
 
 With this dataset that contains information such as the recipe name, recipe cooking time, certain tags associated with the recipe, steps, ingredients, etc, we hope to utilize certain features to create a regression model on the average rating on a recipe. 
@@ -37,7 +37,7 @@ We decided to choose rmse over other metrics because it is a straightforward var
 
 <br>
 
-## Baseline Model
+## <strong> Baseline Model </strong> 
 
 <br> 
 
@@ -57,5 +57,11 @@ We began our model development by choosing certain features to use. Our model ut
 
 Of course we had to apply some feature engineering to these columns so they were usable by our decision tree regressor model. 
 
-Our initial feature engineering was with tags. Each recipe contained a list of multiple tags that was very convoluted and messy. Thus, we decided to extract the first tag of each recipe's tag list and one hot encode these. At first we were unsure whether or not this was a valid way to associate a single tag. However, through some inspection we realized the tags were not ordered in any way so the first tag in the list must be the initial idea associated with a recipe and thus could be an optimal way to designate a single tag to a recipe. 
+Our initial feature engineering was with <code>tags</code>. Each recipe contained a list of multiple tags that was very convoluted and messy. Thus, we decided to extract the first tag of each recipe's tag list and one hot encode these. At first we were unsure whether or not this was a valid way to associate a single tag. However, through some inspection we realized the tags were not ordered in any way so the first tag in the list must be the initial idea associated with a recipe and thus could be an optimal way to designate a single tag to a recipe. 
+
+Furthermore, we applied feature engineering to <code>nutrition</code> -- which, to reiterate, was a list of health facts. We decided to apply a function transformer to this column which took the list and created 8 individual columns to store each health fact value individually. 
+
+The rest of the columns were already in a numeric data type format that was usable by the model and we felt that there was nothing required of us to feature engineer further. 
+
+In summary, we had <code>tags</code> as nominal categorical data that required a one hot encoding and we split the <code>nutrition</code> column into multiple columns of numeric values. 
 
