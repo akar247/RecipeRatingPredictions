@@ -116,6 +116,6 @@ To evaluate the "fairness" between these two groups within our dataset, we will 
 
 <strong>Test Statistic:</strong> The difference in RMSE of our model when predicting the average rating of recipes with less than 10 ingredients and recipes with at least 10 ingredients. 
 
-<strong>Significance Level:</strong> 0.05 emsp;emsp; <strong>p-value:</strong> 0.46
+<strong>Significance Level:</strong> 0.05 &emsp;&emsp; <strong>p-value:</strong> 0.46
 
 <strong>Conclusion:</strong> With these values above for our significance level and p-value > .05, we fail to reject the null. There is insufficient evidence to state that our model performs worse for recipes with less than 10 ingredients.
