@@ -86,7 +86,7 @@ We also decided to standardize the columns <code>n_steps</code> and <code>n_ingr
 We encoded <code>tags</code> the same as done before in the baseline model as done the same with the <code>nutrition</code> health facts. 
 
 
-decided to use a decision tree regressor to predict the average ratings for recipes. A decision tree regressor is a type of ML model that partitions inputs into smaller and smaller groupings so that it can create a prediction on a continuous quantiative value based off the input features. 
+For the actual model, we decided to use a decision tree regressor to predict the average ratings for recipes. A decision tree regressor is a type of ML model that partitions inputs into smaller and smaller groupings so that it can create a prediction on a continuous quantiative value based off the input features. 
 
 For our baseline model we kept the default parameters offered by sklearn's DecisionTreeRegressor class:
 
