@@ -94,3 +94,28 @@ For our baseline model we kept the default parameters offered by sklearn's Decis
 - splitter: 'best'
 - max_depth: None (expands nodes until all leaves are pure or less nodes than min_samples_split)
 - min_samples_split: 2
+
+
+<br>
+
+---
+
+<br>
+
+## <strong> Fairness Analysis </strong> 
+
+<br> 
+
+For our fairness analysis, we decided to split our data into two groups, recipes with less than 10 ingredients and recipes that required at least 10 ingredients.
+
+To evaluate the "fairness" between these two groups within our dataset, we will use the RMSE of our model's prediction. 
+
+<strong>Null Hypothesis:</strong> Our model accurately evaluates the average rating for recipes with less than 10 ingredients and for recipes with at least 10 ingredients. 
+
+<strong>Alternate Hypothesis:</strong> Our model's accuracy is less when evaluating recipes with less than 10 ingredients than for recipes with at least 10 ingredients. 
+
+<strong>Test Statistic:</strong> The difference in RMSE of our model when predicting the average rating of recipes with less than 10 ingredients and recipes with at least 10 ingredients. 
+
+<strong>Significance Level:</strong> 0.05 <strong>p-value:</strong> 0.46
+
+<strong>Conclusion:</strong>
