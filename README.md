@@ -1,6 +1,6 @@
 ### <u> Overview</u>: 
 
-Previously we completed an EDA (exploratory data analysis on a recipe rating dataset from [food.com](https://dsc80.com/project3/recipes-and-ratings/food.com). This analysis can be found [here](https://akar247.github.io/RecipesDurationAnalysis/). Through this website we have documented our process for creating predictions on the dataset. 
+Previously we completed an EDA exploratory data analysis on a recipe rating dataset from [food.com](https://dsc80.com/project3/recipes-and-ratings/food.com). This analysis can be found [here](https://akar247.github.io/RecipesDurationAnalysis/). Through this website we have documented our process for creating predictions on the dataset. 
 
 <br>
 
@@ -25,9 +25,9 @@ We will be using root mean squared error (rmse) to evaluate the accuracy of our 
 
 We decided to choose rmse over other metrics because it is a straightforward variable.
 
-- It is always expressed in the same units as our response variable to interpretation is simple. 
+- It is always expressed in the same units as our response variable so interpretation is simple. 
  
-- It is sensitive to outliers so we can understand how our model handles inputs that are much different from the norm of the training set.
+- It is sensitive to outliers so we can understand how our model handles inputs that are different from the norm of the training set.
 
 <br>
 
@@ -64,8 +64,14 @@ The rest of the columns were already in a numeric data type format that was usab
 In summary, we had <code>tags</code> as nominal categorical data that required a one hot encoding and we split the <code>nutrition</code> column into multiple columns of numeric values. The rest of our columns <code>minutes</code>, <code>n_steps</code>, and <code>n_ingredients</code> were already quantitative values and did not require any feature engineering. 
 
 
-To explain our model further, we decided to utilize the <code>LinearRegression</code> model of sklearn. We chose this model for the baseline because it was a simple testing method for us to understand the effect of our chosen features on the development of our predictions without convoluting the pipeline. In this way we saw that the testing dataset created through <code>train_test_split</code> had an rmse of 0.641 -- much lower than we would for our final model but it is a good place to begin. 
+To explain our model further, we decided to utilize the <code>DecisionTreeRegressor</code> model of sklearn. We chose this model for the baseline because we knew we wanted our final model to be of the same class so it would be quick way for us to understand the effect of our chosen features on the development of our predictions without convoluting the pipeline or testing different hyperparameter combinations. In this way we saw that the testing dataset created through <code>train_test_split</code> had an rmse of 0.949 -- a great value that shows us that we are definitely not underfitting our model. 
 
+For our baseline model we kept the default parameters offered by sklearn's DecisionTreeRegressor class:
+
+- criterion: 'squared error'
+- splitter: 'best'
+- max_depth: None (expands nodes until all leaves are pure or less nodes than min_samples_split)
+- min_samples_split: 2
 
 <br>
 
@@ -86,14 +92,17 @@ We also decided to standardize the columns <code>n_steps</code> and <code>n_ingr
 We encoded <code>tags</code> the same as done before in the baseline model as done the same with the <code>nutrition</code> health facts. 
 
 
-For the actual model, we decided to use a decision tree regressor to predict the average ratings for recipes. A decision tree regressor is a type of ML model that partitions inputs into smaller and smaller groupings so that it can create a prediction on a continuous quantiative value based off the input features. 
+In the actual model, we decided to use a decision tree regressor to predict the average ratings for recipes. A decision tree regressor is a type of ML model that partitions inputs into smaller and smaller groupings so that it can create a prediction on a continuous quantiative value based off the input features. 
 
-For our baseline model we kept the default parameters offered by sklearn's DecisionTreeRegressor class:
+For our final model we chose these parameters:
 
 - criterion: 'squared error'
 - splitter: 'best'
-- max_depth: None (expands nodes until all leaves are pure or less nodes than min_samples_split)
-- min_samples_split: 2
+- max_depth: 2
+- min_samples_split: 5
+
+
+With our final model we found an RMSE value on our testing set of 0.645. 
 
 
 <br>
@@ -116,6 +125,6 @@ To evaluate the "fairness" between these two groups within our dataset, we will 
 
 <strong>Test Statistic:</strong> The difference in RMSE of our model when predicting the average rating of recipes with less than 10 ingredients and recipes with at least 10 ingredients. 
 
-<strong>Significance Level:</strong> 0.05 &emsp;&emsp; <strong>p-value:</strong> 0.46
+<strong>Significance Level:</strong> 0.05 &emsp;&emsp; <strong>p-value:</strong> 0.41
 
 <strong>Conclusion:</strong> With these values above for our significance level and p-value > .05, we fail to reject the null. There is insufficient evidence to state that our model performs worse for recipes with less than 10 ingredients.
