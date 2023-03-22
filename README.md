@@ -21,9 +21,9 @@ Specifically, the response variable we are predicting is the average rating asso
 
 <br>
 
-We will be using root mean squared error (rmse) to evaluate the accuracy of our model's predictions. 
+We will be using root mean squared error (RMSE) to evaluate the accuracy of our model's predictions. 
 
-We decided to choose rmse over other metrics because it is a straightforward variable.
+We decided to choose RMSE over other metrics because it is a straightforward variable.
 
 - It is always expressed in the same units as our response variable so interpretation is simple. 
  
@@ -64,7 +64,7 @@ The rest of the columns were already in a numeric data type format that was usab
 In summary, we had <code>tags</code> as nominal categorical data that required a one hot encoding and we split the <code>nutrition</code> column into multiple columns of numeric values. The rest of our columns <code>minutes</code>, <code>n_steps</code>, and <code>n_ingredients</code> were already quantitative values and did not require any feature engineering. 
 
 
-To explain our model further, we decided to utilize the <code>DecisionTreeRegressor</code> model of sklearn. We chose this model for the baseline because we knew we wanted our final model to be of the same class so it would be quick way for us to understand the effect of our chosen features on the development of our predictions without convoluting the pipeline or testing different hyperparameter combinations. In this way we saw that the testing dataset created through <code>train_test_split</code> had an rmse of 0.949 -- a great value that shows us that we are definitely not underfitting our model. 
+To explain our model further, we decided to utilize the <code>DecisionTreeRegressor</code> model of sklearn. We chose this model for the baseline because we knew we wanted our final model to be of the same class so it would be quick way for us to understand the effect of our chosen features on the development of our predictions without convoluting the pipeline or testing different hyperparameter combinations. In this way we saw that the testing dataset created through <code>train_test_split</code> had an RMSE of 0.949 on our testing set-- a great value that shows us that we are definitely not underfitting our model. 
 
 For our baseline model we kept the default parameters offered by sklearn's DecisionTreeRegressor class:
 
@@ -103,6 +103,8 @@ For our final model we chose these parameters:
 
 
 With our final model we found an RMSE value on our testing set of 0.645. 
+
+Comparing this RMSE with the RMSE of our previous baseline model of .949 it is obvious that our final model is an improves on the baseline model's accuracy with unseen data. 
 
 
 <br>
